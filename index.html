@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>창호미니 통장</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="창호미니 통장">
+<meta name="theme-color" content="#152A3B">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIuywve2YuOuvuOuLiCDqsIDsobEg7Ya17J6lIiwgInNob3J0X25hbWUiOiAi7Ya17J6lIiwgInN0YXJ0X3VybCI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNGNkYxRTQiLCAidGhlbWVfY29sb3IiOiAiIzE1MkEzQiIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUxRQUFBQzBDQVlBQUFBOXpRWXlBQUFKbzBsRVFWUjRuTzJkd1hIZU5oU0VIelV1UVVvTG1WRktVREtUbXcrNXBBR1B1bEFGT2JtTGpCcndOYmZNSkM1QkxrSjJEMzhPSGlvVVJSSjQ0QU94Qys1ZXJVOThEMXhEK01FbC9zRWE2dWIyN3VKbG5wLyt0UjkrK3RsOUxYSEhjbCsvZkI3Y3Z6UkFoMTEwYWw2MHdSZDNESGVFeWF0ZVlHa0daaGw4Y1hXNVd1YXU4a3ZYbGhLdEIxRWNIaGR0N05CZnRyVW1SaHBFY1hoY2xMRkRma25xd3gzcUlJckQ0L1lhKzJvUGJDWXppNHZsTHBlTGUrZHJxbDJHbHBuRjFlQkt0bk5IRlUzdk9SZGtHMFJ4bUp4M0NlS2VvV1ZtY1VkeTN0bmFaV2laV1Z3THptUHFiRVBMek9KYWNybW16akswekN3T2djdnhZZExRTXJNNEpDN2x4OTM3MEV5RElhNS9idFBRMm1jV2g4aHQrWExWMERLek9HUnV6WitMaHBhWnhURndTejUxcjZIUm1oSW5icW8zaGxZRVZCd1ROL2RyOWd5TjNKUTRjYU5lR1Zwdm1vaGo1S2FSMCtRTXpkS1VPSEZtRTBQcmhWWnh6TnpvMzlVWm1yRXBjZUlXRFkxU25EaHhYbTR3MHlFdzR2cmhYczNRYU1XSkUrZmxYZ3lOV0p3NGNWNXVNUHUrajRkWW5EaHhYdTdOR3JyR1JjU0pPNHE3a3BuRjljUXBiU2V1Szg1bGFKYW14SjJYVTlwT1hGZGNscUhabWhKM1hrNXBPM0ZkY1p1R2JsMmNPSEZlVG1rN2NWMXhnM0xRY2R6ai9iWDdkNDc2OE9jMzkvWFdkR2J1amFHUmlrUG05cGczVjBzbVQ2bjF1TFRtQmtWSDg3aS9Qdjd1NXFLVk1qalRlTmJpWGd5TldGeHI3b2hadUZSemN6T001eEhjY0hON2QwRXRyaFdIYk9TNVB2ejVEWDQ4aitRR1JVZi9GNU9SNS9LdXQ1SHZ3eDV1Y1pjaitpTG9ITE9SNThveE51cDlpT0RjaG1ab0twZXJZZVNTbWJMR0I4NjFPaER2UXlUbk1qUkxVelgzaTZjYVRWT2p6dWdhVTlmYkVoT1hiV2ltcG5wOCtMRzNiclQ3VUl2TE1qUmJVMnNxTlFYU24rL1M1Y2xaSHRJa0RjM1kxRndsUm1aNGlGR2pyNjNyTVhDYmhtNWRYQVRudmVtTXV3VFJQYUwxNStGV0RZMVEzRjdPYzZON21Ma2kra1h1TDRmcjlteTdzNW5aekxkT1hob2Y5UDV5dUM3VGRybG05aGdBcWI4Y3pqc0diUDJ0cWJ1ejdXVG03MXh1ZjQvMzE1VDlyYW1ycysxazV0ZGNicDhsVzRFSS9TMnBtN1JkanBuUEhPQ0pIQi9FL2taMWtiYVRtZU4yUWRpMzlPalRkakt6ajlzelhnejlVWjl0SnpQN3VmY1BuNUkvdzd5bDErWFpkcU5rNW1XdTUzR2hQZHN1TlR2M2ZOTWl1TlQ0ak9QYnVrNHZSM20yWFhRd0g2MC9GTzd4L3BxaXppbEhkN1pkOUxvWnJiOGp1Wnh4OGs0ZXJmdnI0bXk3cVdSbUgxZVNrOTV6dmRvYzFkbDJrZXRteFA1YWNibnI2YWpyMWVTbzAzYWxZdWxQNCtubjNoZ2FxYmlwb21abjFQNWFjNm45NmJYeFIrdVBNbTAzbDh3Y3cvV3cxVW1SdG92WXBrUHVqNFdiM2dmVU9xK1FpOHNSNHp1QXlCejdlRjRoRjJlMmYzWkc3NCtOUTMvWWNvVmNYRXJzVVVkVUxuSnZPdWQ2a1J4MDJtN1A3SXhtRW5adUtzOTlPYnBPNkxSZHFWaE13c0tWcWtWLzBHbTdMVEdIMEJtNHZjdU9WdjNCcHUxNmVuR1RsZHZTMXJLalpYOTBhVHN6ZlFYYVVSempBWTlkcE8zRWlSdEZsYllUSnk3RlFhYnRjcmVGV3RkNWRnN3hOUzJhdE4ybzNzNWlRK2ZZSGw1UnB1M0VZWEJtQmxjblJkcE9IQjVYcXRwMTBxWHRHT3JzblN2VkVYVytReHZFbm80bytPZmpyNHMvODh2RDMxV3Vkd1EzMStQOU5WVGtsQ3B0eC9SR3hacVpsLzROM2N4TWo4SGZIWEdSUFZ5cFdwbGt5OGhUalQvMzQyOS9RSnQ1cjQ2dVUybTdocHdaejJlQ0VyV29Felp0VnlyVVpjYWF2QXpMZjlaV0hHVGFybFJzWmg2Vnk3S1pxd1VIbDdZckZjdmdsNHFsdjlZY1hOcXVSSzBIc2JaWStrUGdsTFk3aUNzVlMzOG9IR1RhcmpldVZDejlJWEYwYVRzMnJsUk0vU0hWcWJSZEVMZjBPRHRYY3hheHYwalZyRk5wdTBDdXhOUXljeXhIbGJaajRVcWwvdlp6Y0dtN0xURWNiVEJtTTFJUFM1aG1acWJUWCtIU2RyMTg1OGZXOG9QSnpDa2hSVWZObExhcnl1V3NxUkhxckttajYxVGFUbHcxdGVoUGFUdHhTYTVFcmZxalM5dWhucW5XSzhmd1FYekt3YVh0bnA4NHoxUTdJNGQ0eGlCYzJrNmN1RDJjMG5iaXV1SW8wM2FJWjZyMXlER2VNUWlidG1NN1UrMXNIT29aZzVScE96T094K0RNSE5NWDFrOUZsN1lyRlV0LzR2WngwR203cUZ3SGFuK3MzUHVIVDdCMXduK1Q3SlpZL3l5aWM2bHhSYWx6U1hCcHU3bjJ6TkpJSnVtQk15dTdIMGZXQ2YxTnNpTzNwYlhaaE1Va2FCejc2YS9RYWJ1Ull6cDF0RWR1Rk1OOWdFM2JlYmpwcklKY0p6b1hPVHUzNmc4eWJiZkVwV2FIeC90cmlEcFp1WlNaUGJOenkvNGcwM2FsZnhZWjZtVGhTdFc2UDZxMFhjNHNIWG05czNCUnN6TkNmL1JwdTdrWUF6VXR1YWgxTTBwL2RHbTduTmtpZFpPUSt6dVN5ekV6Mmx2ZEtRNDJiYmNsUFd5SjU1YkVabVl6MHJUZDgxUDZOYTJsMlllcHZ5TzNPcGZFYUdZendyU2Q5cWYzYzB3bklYazU2TFJkaXN0ZFQ3ZXVFNG1MV0Rjajl6ZGNMcGNMYW5HNVhOU0htOXpyc1hLOW05bk1iTGk1dmJ2VXZzZ1JYS1NwRWZ2Ynk1M0J6R1lGaGtadUtuZHR1SFhqa1BzcjRTTEd4SE85MWh4RjJpNVh1VFB3V1NLblp6UHo4MU1uYWJ1cDNqOTh5dnE1K2MxbTZVOW0zdWF5bGh4c1RabjV0cWFRMzVIemNwNitlek96V1VkcHU1SXR2Vkc5SElsd2RqT2JKVDRVdGk0dWd2TStSR0I4UWhiZEkxcC9IbTdWMEFqRlJYRWxUOGJXYmpwU2Y1Rjk1VnlQZ1ZzME5FcHgwVnpwSTEra1k2LzI5dUM5WG82UXVEZUdSaXF1QnJjbng5RHlGZjdhZGJQY3Z4VDN5dEJveGRYaW9rTHROZjk4bDN4UVhkS1p6R3cyTVRSaWNiVzU2RE1vek1xV0p6WHJTQW5oUGtSeXc4M3QzUVcxdUtPNEdvWnFKWmEzczJ0eFhhVHRvamhtWXl0TitGM2RwTzBpT1Naam81ODFkelFILzAyeUxJL1BqMVpQaitzak9kY016ZElVeWtPTWFDSHRoNk55MllabWFncjVJWTFIaU44RGlNNTFtN1pyd2VuaFIzc3VhV2pHcHNTZGw2TTYyMDZjdUJSMzlmWEw1d0cxT0hIaXZCemQyWGJpeEcxeGxHZmJpUk8zSnRxejdjU0pXMUxYWjl1Sk94LzM4b0ZRbVE1eDdOelhMNThIOS9jVWVpOGlUdHlSWEpHaDBac1NkMTd1eGRCcis5RVJGeEVucmpZMytyZXJzKzNFblpzem14bDZhNVptYVVyYytiaXBiMm0rU1ZhY3VCeTlNZlI4bG1acFN0dzV1YmxmbGJZVFI4M050YnBtMXR2ZzR0QzVZUmplK0hkMWhsNzY0WnlMc0F5R09HNXV6WitiUzQ3Y3ZlbnhJaXlESVk2YjI1cHNpeDk5enkvQ01oamkrdWFTaGs3TjBvaE5pZXVYUy9reGE0YldhMXJpRUxpY0pYRDJra1A3MCtKYWNybWY1MXhyNlBHWHNnMkdPRzdPc3puaDNwb3owOHNBNG83alBHWTJLelQwS0IwakpxNFdWL0ljeEd6bnRsM08veDZtUVJTSHdaV2EyU3hnSDFxUlUzR1IzQjR6bSsxY2NzeDF4aThnRWhmRGVkZkthd28xOUNnRm04VGxLc3JJbzZvWWVwUU9VeGUzcG1namo2cHE2S2w2LzA1eGNXbXVsb21uK2cvTWtGV1E1Rmp0UkFBQUFBQkpSVTVFcmtKZ2dnPT0iLCAic2l6ZXMiOiAiMTgweDE4MCIsICJ0eXBlIjogImltYWdlL3BuZyJ9XX0=">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root{
+    --paper:#F6F1E4;
+    --paper-dim:#EDE6D3;
+    --navy:#152A3B;
+    --navy-soft:#2B4256;
+    --brass:#B8894F;
+    --brass-soft:#D8B47B;
+    --income:#2F8F72;
+    --expense:#C6543A;
+    --line:#CBC0A4;
+    --ink-faint:#8A7F68;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 15% -10%, rgba(184,137,79,0.14), transparent 55%),
+      var(--paper);
+    color:var(--navy);
+    font-family:'Noto Sans KR',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{max-width:480px;margin:0 auto;padding:20px 16px 60px;position:relative;}
+
+  /* ===== HERO / PASSBOOK COVER ===== */
+  .cover{
+    background:linear-gradient(155deg,var(--navy) 0%, var(--navy-soft) 100%);
+    border-radius:22px;
+    padding:28px 24px 24px;
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 18px 40px -18px rgba(21,42,59,0.55);
+  }
+  .cover::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:repeating-linear-gradient(115deg, rgba(255,255,255,0.035) 0 2px, transparent 2px 26px);
+    pointer-events:none;
+  }
+  .cover-eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    color:var(--brass-soft);
+    text-transform:uppercase;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .cover-title{
+    font-family:'Noto Serif KR',serif;
+    font-weight:700;
+    font-size:22px;
+    margin:10px 0 2px;
+    letter-spacing:-0.01em;
+  }
+  .cover-sub{font-size:12.5px;color:rgba(246,241,228,0.6);margin-bottom:22px;}
+  .balance-row{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;}
+  .balance-label{font-size:12px;color:rgba(246,241,228,0.65);margin-bottom:6px;}
+  .balance-amount{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;
+    font-size:34px;
+    letter-spacing:-0.01em;
+  }
+  .balance-amount .won{font-size:18px;margin-right:2px;color:var(--brass-soft);}
+  .stamp{
+    width:64px;height:64px;border-radius:50%;
+    border:2px solid var(--brass);
+    display:flex;align-items:center;justify-content:center;
+    flex-direction:column;
+    color:var(--brass);
+    font-family:'Noto Serif KR',serif;
+    font-weight:700;
+    transform:rotate(-8deg);
+    flex-shrink:0;
+    opacity:0.9;
+    animation:stampIn .5s cubic-bezier(.2,1.4,.4,1) both;
+  }
+  .stamp span:first-child{font-size:9px;letter-spacing:0.1em;}
+  .stamp span:last-child{font-size:14px;margin-top:2px;}
+  @keyframes stampIn{from{transform:rotate(-8deg) scale(1.6);opacity:0;}to{transform:rotate(-8deg) scale(1);opacity:0.9;}}
+
+  .cover-foot{
+    margin-top:20px;padding-top:16px;
+    border-top:1px dashed rgba(246,241,228,0.25);
+    display:flex;justify-content:space-between;font-size:12px;
+  }
+  .cover-foot b{font-family:'IBM Plex Mono',monospace;font-weight:600;}
+  .cover-foot .in b{color:#8FD9BC;}
+  .cover-foot .out b{color:#F0A08C;}
+
+  /* ===== MONTH SELECTOR ===== */
+  .months{
+    display:flex;gap:6px;overflow-x:auto;margin:18px 0 4px;
+    padding-bottom:2px;
+    scrollbar-width:none;
+  }
+  .months::-webkit-scrollbar{display:none;}
+  .month-chip{
+    flex:0 0 auto;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;font-weight:500;
+    padding:7px 13px;border-radius:100px;
+    border:1px solid var(--line);
+    background:transparent;color:var(--ink-faint);
+    cursor:pointer;transition:.15s;
+  }
+  .month-chip.active{background:var(--navy);border-color:var(--navy);color:var(--paper);}
+
+  /* ===== TABS ===== */
+  .tabs{display:flex;gap:2px;margin:18px 0 14px;background:var(--paper-dim);border-radius:12px;padding:3px;}
+  .tab{flex:1;text-align:center;padding:9px 0;font-size:13px;font-weight:700;border-radius:9px;cursor:pointer;color:var(--ink-faint);transition:.15s;}
+  .tab.active{background:var(--navy);color:var(--paper);}
+
+  .panel{display:none;}
+  .panel.active{display:block;animation:fadeUp .35s ease both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .card{
+    background:#FFFDF8;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px;
+    margin-bottom:14px;
+  }
+  .card-title{
+    font-family:'Noto Serif KR',serif;font-weight:700;font-size:15px;
+    display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;
+  }
+  .card-title .note{font-family:'Noto Sans KR';font-weight:400;font-size:11.5px;color:var(--ink-faint);}
+
+  /* chart card */
+  canvas{max-width:100%;}
+
+  /* ===== LEDGER ===== */
+  .ledger-day{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;color:var(--ink-faint);
+    margin:18px 0 6px;letter-spacing:0.04em;
+  }
+  .ledger-day:first-child{margin-top:0;}
+  .ledger-row{
+    display:flex;align-items:center;gap:10px;
+    padding:9px 0;
+    border-bottom:1px dotted var(--line);
+  }
+  .ledger-row:last-child{border-bottom:none;}
+  .led-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+  .led-dot.in{background:var(--income);}
+  .led-dot.out{background:var(--expense);}
+  .led-mid{flex:1;min-width:0;}
+  .led-name{font-size:13.5px;font-weight:500;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .led-cat{font-size:11px;color:var(--ink-faint);margin-top:1px;}
+  .led-amt{font-family:'IBM Plex Mono',monospace;font-size:13.5px;font-weight:600;white-space:nowrap;}
+  .led-amt.in{color:var(--income);}
+  .led-amt.out{color:var(--expense);}
+  .led-bal{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);min-width:64px;text-align:right;}
+
+  .empty{
+    text-align:center;padding:46px 10px;color:var(--ink-faint);
+  }
+  .empty-mark{font-size:26px;margin-bottom:10px;font-family:'Noto Serif KR',serif;color:var(--brass);}
+  .empty p{font-size:13px;margin:2px 0;line-height:1.6;}
+
+  /* ===== CATEGORY LIST ===== */
+  .cat-item{padding:12px 0;border-bottom:1px solid var(--paper-dim);}
+  .cat-item:last-child{border-bottom:none;}
+  .cat-top{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;margin-bottom:7px;}
+  .cat-top .nm{font-weight:700;}
+  .cat-top .amt{font-family:'IBM Plex Mono',monospace;font-weight:600;}
+  .cat-bar-bg{height:7px;border-radius:5px;background:var(--paper-dim);overflow:hidden;}
+  .cat-bar-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--brass),var(--expense));}
+  .cat-pct{font-size:10.5px;color:var(--ink-faint);margin-top:4px;font-family:'IBM Plex Mono',monospace;}
+
+  .toggle-row{display:flex;gap:6px;margin-bottom:14px;}
+  .toggle-btn{
+    flex:1;text-align:center;padding:8px 0;border-radius:10px;font-size:12.5px;font-weight:700;
+    border:1px solid var(--line);cursor:pointer;color:var(--ink-faint);
+  }
+  .toggle-btn.active.in{background:rgba(47,143,114,0.12);border-color:var(--income);color:var(--income);}
+  .toggle-btn.active.out{background:rgba(198,84,58,0.12);border-color:var(--expense);color:var(--expense);}
+
+  .foot-note{
+    text-align:center;font-size:10.5px;color:var(--ink-faint);margin-top:22px;
+    font-family:'IBM Plex Mono',monospace;letter-spacing:0.04em;
+  }
+
+  /* ===== INPUT FORM ===== */
+  .kind-row{display:flex;gap:6px;margin-bottom:16px;}
+  .kind-btn{
+    flex:1;text-align:center;padding:10px 0;border-radius:10px;font-size:13px;font-weight:700;
+    border:1px solid var(--line);cursor:pointer;color:var(--ink-faint);transition:.15s;
+  }
+  .kind-btn.active[data-kind="income"]{background:rgba(47,143,114,0.12);border-color:var(--income);color:var(--income);}
+  .kind-btn.active[data-kind="expense"]{background:rgba(198,84,58,0.12);border-color:var(--expense);color:var(--expense);}
+  .kind-btn.active[data-kind="transfer"]{background:rgba(184,137,79,0.14);border-color:var(--brass);color:var(--brass);}
+
+  .field{margin-bottom:14px;}
+  .field label{
+    display:block;font-size:11.5px;color:var(--ink-faint);margin-bottom:6px;
+    font-family:'IBM Plex Mono',monospace;letter-spacing:0.03em;
+  }
+  .field input, .field select{
+    width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);
+    background:var(--paper);color:var(--navy);font-size:14px;font-family:'Noto Sans KR',sans-serif;
+    outline:none;
+  }
+  .field input:focus, .field select:focus{border-color:var(--brass);}
+  .amt-input-wrap{position:relative;}
+  .amt-input-wrap span{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink-faint);font-size:14px;}
+  .amt-input-wrap input{padding-left:26px;font-family:'IBM Plex Mono',monospace;}
+
+  .submit-btn{
+    width:100%;padding:13px 0;border-radius:12px;border:none;
+    background:var(--navy);color:var(--paper);font-size:14.5px;font-weight:700;
+    cursor:pointer;font-family:'Noto Serif KR',serif;letter-spacing:0.02em;
+    box-shadow:0 10px 20px -10px rgba(21,42,59,0.5);
+    transition:.15s;
+  }
+  .submit-btn:active{transform:scale(0.98);}
+  .submit-btn:disabled{opacity:0.45;cursor:not-allowed;}
+
+  .recent-added{margin-top:20px;}
+  .recent-added .card-title{margin-bottom:8px;}
+  .clear-link{
+    display:block;text-align:center;margin-top:14px;font-size:11.5px;color:var(--ink-faint);
+    text-decoration:underline;cursor:pointer;background:none;border:none;font-family:'Noto Sans KR';
+  }
+  .toast{
+    position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(10px);
+    background:var(--navy);color:var(--paper);padding:10px 18px;border-radius:100px;
+    font-size:12.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;
+    box-shadow:0 12px 24px -10px rgba(0,0,0,0.4);white-space:nowrap;z-index:50;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="cover">
+    <div class="cover-eyebrow"><span>창호미니 부자되기 프로젝트</span><span id="yearTag">2026</span></div>
+    <div class="cover-title">창호미니 가족 통장</div>
+    <div class="cover-sub" id="periodLabel">2026년 1월 ~ 8월 누계</div>
+    <div class="balance-row">
+      <div>
+        <div class="balance-label">현재 잔액</div>
+        <div class="balance-amount"><span class="won">₩</span><span id="balanceNum">0</span></div>
+      </div>
+      <div class="stamp"><span>SAVED</span><span>認</span></div>
+    </div>
+    <div class="cover-foot">
+      <div class="in">수입 <b id="footIn">0</b></div>
+      <div class="out">지출 <b id="footOut">0</b></div>
+      <div>저축 <b id="footSave" style="color:var(--brass-soft)">0</b></div>
+    </div>
+  </div>
+
+  <div class="months" id="monthBar"></div>
+  <div id="syncBar" style="text-align:right;margin:6px 2px 0;">
+    <span id="syncBtn" style="font-size:11.5px;color:var(--brass);cursor:pointer;font-family:'IBM Plex Mono',monospace;">⟳ 시트와 동기화</span>
+    <span id="syncTime" style="font-size:10.5px;color:var(--ink-faint);margin-left:8px;"></span>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-panel="dash">대시보드</div>
+    <div class="tab" data-panel="ledger">거래내역</div>
+    <div class="tab" data-panel="cat">카테고리</div>
+    <div class="tab" data-panel="add">입력</div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="panel active" id="panel-dash">
+    <div class="card">
+      <div class="card-title">월별 수입·지출<span class="note">2026. 1–8</span></div>
+      <canvas id="flowChart" height="190"></canvas>
+    </div>
+    <div class="card">
+      <div class="card-title">지출 구성<span class="note" id="catNote">선택한 달</span></div>
+      <canvas id="donutChart" height="220"></canvas>
+    </div>
+    <div class="card">
+      <div class="card-title">저축률<span class="note">수입 대비</span></div>
+      <canvas id="rateChart" height="150"></canvas>
+    </div>
+  </div>
+
+  <!-- LEDGER -->
+  <div class="panel" id="panel-ledger">
+    <div class="card" id="ledgerCard" style="padding-top:14px;"></div>
+  </div>
+
+  <!-- CATEGORY -->
+  <div class="panel" id="panel-cat">
+    <div class="card">
+      <div class="toggle-row">
+        <div class="toggle-btn active out" data-kind="expense">지출 항목</div>
+        <div class="toggle-btn in" data-kind="income">수입 항목</div>
+      </div>
+      <div id="catList"></div>
+    </div>
+  </div>
+
+  <!-- ADD TRANSACTION -->
+  <div class="panel" id="panel-add">
+    <div class="card">
+      <div class="card-title">새 거래 입력<span class="note" id="addMonthNote">8월</span></div>
+      <div class="kind-row">
+        <div class="kind-btn active" data-kind="expense">지출</div>
+        <div class="kind-btn" data-kind="income">수입</div>
+        <div class="kind-btn" data-kind="transfer">이체/저축</div>
+      </div>
+
+      <div class="field">
+        <label>날짜</label>
+        <input type="date" id="inDate">
+      </div>
+      <div class="field">
+        <label>내역</label>
+        <input type="text" id="inName" placeholder="예: 이마트 사상점">
+      </div>
+      <div class="field">
+        <label>분류</label>
+        <input type="text" id="inCat" list="catOptions" placeholder="목록에서 고르거나 새로 입력">
+        <datalist id="catOptions"></datalist>
+      </div>
+      <div class="field">
+        <label>금액</label>
+        <div class="amt-input-wrap">
+          <span>₩</span>
+          <input type="number" id="inAmt" placeholder="0" min="0" step="1">
+        </div>
+      </div>
+
+      <button class="submit-btn" id="submitBtn">통장에 기록하기</button>
+      <div class="clear-link" id="clearAdded">내가 입력한 거래 전체 삭제</div>
+    </div>
+
+    <div class="card" id="settingsCard">
+      <div class="card-title">시트 자동 기록 설정<span class="note" id="syncStatus">연결 안 됨</span></div>
+      <div class="field">
+        <label>Apps Script 웹 앱 URL</label>
+        <input type="text" id="inWebhookUrl" placeholder="https://script.google.com/macros/s/.../exec">
+      </div>
+      <div class="field">
+        <label>보안 토큰</label>
+        <input type="text" id="inWebhookToken" placeholder="Apps Script에 설정한 비밀 문자열">
+      </div>
+      <button class="submit-btn" id="saveWebhookBtn" style="background:var(--brass);">이번 세션에 적용</button>
+      <div style="font-size:11px;color:var(--ink-faint);margin-top:10px;line-height:1.6;">
+        이미 기본값으로 연결되어 있어서 따로 입력 안 하셔도 바로 사용하실 수 있어요. 여기서 값을 바꾸면 이 화면을 새로고침하기 전까지만 적용돼요 (계정 없이 여는 분들도 쓸 수 있도록 별도로 저장은 하지 않아요).
+      </div>
+    </div>
+
+    <div class="card recent-added" id="recentAddedCard" style="display:none;">
+      <div class="card-title">방금 입력한 거래</div>
+      <div id="recentAddedList"></div>
+    </div>
+  </div>
+
+  <div class="foot-note">창호미니 가계부 · 실제 데이터 + 직접 입력 · 2026</div>
+</div>
+<div class="toast" id="toast"></div>
+</div>
+
+<script>
+/* ================= DATA (from user's spreadsheet, months 1–8 = Jan–Aug 2026) ================= */
+const months = [1,2,3,4,5,6,7,8];
+const monthNames = months.map(m=>m+'월');
+
+const totals = {
+  income:  [7456332,8385468,8921302,6938486,7949102,7750738,5968352,5097922],
+  expense: [4996869,4424402,4986940,4754826,5805890,4150525,5885638,3492260],
+  saving:  [48000,48000,66000,30000,48000,18000,30000,48000]
+};
+
+const incomeCats = {
+  "월급":        [6842880,8375580,8902300,6200780,6238520,7616586,5954200,4893770],
+  "보험환급액":  [607224,0,0,501800,1704354,130000,0,0],
+  "금융이자":    [6228,9888,7002,103496,6228,4152,4152,204152],
+  "중고거래수익":[0,0,12000,0,0,0,10000,0],
+  "기타":        [0,0,0,132410,0,0,0,0],
+  "정부지원금":  [0,0,0,0,0,0,0,0],
+};
+
+const expenseCats = {
+  "대출이자 및 상환": [1375811,1375578,1372013,1374247,1340736,1372869,1371054,1171256],
+  "개인용돈":         [347000,431000,445300,317000,312700,380000,298000,245600],
+  "식비":             [374385,222698,140765,280034,229444,327523,286381,140680],
+  "외식비":           [135800,148700,202818,185628,165976,214173,172400,259600],
+  "공과금/관리비":    [271568,314657,356960,298812,238967,321739,204840,0],
+  "병원비/약":        [316842,60200,104700,793970,721531,143707,12000,37900],
+  "보험료":           [421424,104490,157270,157270,496320,179460,76050,76050],
+  "양육비(피복비)":   [279600,10000,354096,64400,123100,51125,383581,123117],
+  "양육비(기타)":     [140874,252440,257540,80156,132440,64300,182280,279580],
+  "쇼핑":             [0,0,187920,33563,290000,124569,208869,114660],
+  "선물/용돈":        [224050,440000,154528,196000,404710,0,0,10600],
+  "경조사":           [50000,50000,250000,50000,50000,100000,250000,50000],
+  "유류비":           [131000,164530,167550,101600,236550,120550,189850,0],
+  "양육비(병원비/약)":[33020,19400,156900,153800,211653,228800,32500,8900],
+  "교통비":           [64158,58500,39190,108959,92950,48580,81430,25800],
+  "기타 생활비":      [224102,8700,40200,8700,87580,49700,1368281,76287],
+  "양육비(식비)":     [199697,110783,31000,37000,181430,33048,40557,0],
+  "간식비":           [71966,61136,54200,62925,13390,42258,0,27100],
+  "카페":             [77850,0,45300,14605,47065,0,37385,207300],
+  "차량유지비":       [0,0,360000,40500,0,0,0,267830],
+  "여행":             [54738,32000,0,199246,270658,0,0,0],
+  "양육비(교육비)":   [0,0,0,50000,116000,80000,50000,220000],
+  "헌금/후원":        [83000,16000,64000,32000,16000,48000,32000,0],
+  "통신비":           [93294,0,0,0,0,0,178250,12500],
+  "상조회":           [18000,18000,36000,0,18000,18000,0,18000],
+  "구독료":           [8690,8690,8690,95608,8690,8690,8690,0],
+  "문화생활":         [0,0,0,0,0,55900,113000,107000],
+  "세금":             [0,0,0,0,0,0,178250,12500],
+  "생필품":           [0,0,0,18803,0,107534,118990,0],
+  "미용":             [0,516900,0,0,0,0,11000,0],
+  "노후준비":         [0,0,0,0,0,30000,0,0],
+};
+
+// Detailed daily ledger — only January has full transaction detail in the source sheet.
+const ledgerByMonth = {1: [
+["01월 01일 (목)","전년도 이월금","기타","","",4982536],
+["01월 01일 (목)","도련님 생일축하금","선물/용돈","",100000,4882536],
+["01월 04일 (일)","주일헌금/신년감사헌금","헌금/후원","",31000,4851536],
+["01월 05일 (월)","홍대개미","외식비","",9900,4841636],
+["01월 06일 (화)","하린이 슬리퍼","양육비(피복비)","",29000,4812636],
+["01월 06일 (화)","한달적금이자","금융이자",2076,"",4814712],
+["01월 08일 (목)","하린이 옷","양육비(피복비)","",52000,4762712],
+["01월 09일 (금)","간편커리","식비","",17000,4745712],
+["01월 10일 (토)","하린이 옷","양육비(피복비)","",14900,4730812],
+["01월 11일 (일)","마이구마","양육비(식비)","",12900,4717912],
+["01월 12일 (월)","미니 엽산","병원비/약","",65000,4652912],
+["01월 12일 (월)","미니 우리병원","병원비/약","",6100,4646812],
+["01월 14일 (수)","하린이 차량비","양육비(기타)","",12500,4634312],
+["01월 14일 (수)","미니 실비보험 환급","보험환급액",73276,"",4707588],
+["01월 15일 (목)","하린이 과자","양육비(식비)","",13000,4694588],
+["01월 15일 (목)","하린이 바지","양육비(피복비)","",7000,4687588],
+["01월 16일 (금)","미니 농협대출 이자","대출이자 및 상환","",33854,4653734],
+["01월 16일 (금)","매트","기타 생활비","",75000,4578734],
+["01월 17일 (토)","우리항의원","양육비(병원비/약)","",9000,4569734],
+["01월 17일 (토)","칼국수면","식비","",7000,4562734],
+["01월 18일 (일)","한달적금이자","금융이자",2076,"",4564810],
+["01월 18일 (일)","우리은행 대출 원리금 상환","대출이자 및 상환","",1141957,3422853],
+["01월 18일 (일)","주일헌금","헌금/후원","",16000,3406853],
+["01월 23일 (금)","창호월급","월급",3900000,"",7306853],
+["01월 23일 (금)","창호용돈","개인용돈","",200000,7106853],
+["01월 23일 (금)","미니 주차비","교통비","",8000,7098853],
+["01월 23일 (금)","미니 월급","월급",2942880,"",10041733],
+["01월 23일 (금)","미니 용돈","개인용돈","",147000,9894733],
+["01월 23일 (금)","복지관 식대","식비","",70000,9824733],
+["01월 23일 (금)","기저귀","양육비(기타)","",42000,9782733],
+["01월 23일 (금)","미니 DB보험 환급액","보험환급액",533948,"",10316681],
+["01월 23일 (금)","가족모임 회비","경조사","",50000,10266681],
+["01월 23일 (금)","인터넷","통신비","",26400,10240281],
+["01월 24일 (토)","맥도날드","외식비","",17700,10222581],
+["01월 24일 (토)","이지엔6","병원비/약","",5000,10217581],
+["01월 24일 (토)","이마트 사상점","식비","",64620,10152961],
+["01월 24일 (토)","미니 전화비","통신비","",30564,10122397],
+["01월 24일 (토)","코웨이","기타 생활비","",8700,10113697],
+["01월 24일 (토)","도시가스","공과금/관리비","",52920,10060777],
+["01월 24일 (토)","하린이주스","양육비(식비)","",34800,10025977],
+["01월 24일 (토)","하린이맛밤","양육비(식비)","",15620,10010357],
+["01월 24일 (토)","새우볶음밥","식비","",3634,10006723],
+["01월 24일 (토)","롤매트","기타 생활비","",113295,9893428],
+["01월 24일 (토)","마켓컬리","식비","",18450,9874978],
+["01월 24일 (토)","멜론이용료","구독료","",8690,9866288],
+["01월 24일 (토)","미래소아청소년과의원","양육비(병원비/약)","",2900,9863388],
+["01월 24일 (토)","행복약국","양육비(병원비/약)","",3500,9859888],
+["01월 24일 (토)","하린이 실내복","양육비(피복비)","",33500,9826388],
+["01월 24일 (토)","기저귀","양육비(기타)","",27402,9798986],
+["01월 24일 (토)","투썸플레이스 장림점(도련님 생일케익)","선물/용돈","",37050,9761936],
+["01월 24일 (토)","무한사랑김치찌개","외식비","",30000,9731936],
+["01월 24일 (토)","김치전","식비","",9070,9722866],
+["01월 24일 (토)","아파트관리비(11월분)","공과금/관리비","",218648,9504218],
+["01월 24일 (토)","이마트 사상점","식비","",70713,9433505],
+["01월 24일 (토)","투썸플레이스 부산사상점","카페","",30150,9403355],
+["01월 24일 (토)","사과즙","식비","",21571,9381784],
+["01월 24일 (토)","꼬막무침","식비","",34862,9346922],
+["01월 24일 (토)","하린이 옷","양육비(피복비)","",105099,9241823],
+["01월 24일 (토)","피넛빵앗간","간식비","",30783,9211040],
+["01월 24일 (토)","룰루맘 마이구마","양육비(식비)","",48905,9162135],
+["01월 24일 (토)","카스테라","식비","",8538,9153597],
+["01월 24일 (토)","우리항외과의원","병원비/약","",137441,9016156],
+["01월 24일 (토)","하린이 맨투맨티","양육비(피복비)","",19601,8996555],
+["01월 24일 (토)","사상온누리약국","병원비/약","",3078,8993477],
+["01월 24일 (토)","연세윤내과의원","병원비/약","",5461,8988016],
+["01월 24일 (토)","미니 교통비","교통비","",19058,8968958],
+["01월 24일 (토)","사과","간식비","",10638,8958320],
+["01월 24일 (토)","더조은이비인후과","병원비/약","",5362,8952958],
+["01월 24일 (토)","김해신세계 기차 이용료","양육비(기타)","",3972,8948986],
+["01월 24일 (토)","미니창호 대출금 상환","대출이자 및 상환","",200000,8748986],
+["01월 24일 (토)","부모님 기념일 지원 저축","저축","","-90000",8658986],
+["01월 24일 (토)","미니 실비보험료","보험료","",53860,8605126],
+["01월 24일 (토)","창호 연금저축","노후준비","","-30000",8575126],
+["01월 24일 (토)","농협, 아이사랑, 공제회저축","저축","","-560000",8015126],
+["01월 24일 (토)","복지관 후원금","헌금/후원","",20000,7995126],
+["01월 24일 (토)","상조회","상조회","",18000,7977126],
+["01월 24일 (토)","한달적금이자","금융이자",2076,"",7979202],
+["01월 24일 (토)","mmf투자","저축","","-3000000",4979202],
+["01월 24일 (토)","기차 장난감","양육비(기타)","",39000,4940202],
+["01월 24일 (토)","창호 휴대폰비","통신비","",36330,4903872],
+["01월 24일 (토)","주차비 (할아버지 병문안)","교통비","",1000,4902872],
+["01월 24일 (토)","주차비 (고모할머니 장례식 방문)","교통비","",600,4902272],
+["01월 24일 (토)","주유비 (광신석유 가야대로주유소)","유류비","",62300,4839972],
+["01월 24일 (토)","주차비 (창호 피부과 주차비)","교통비","",2000,4837972],
+["01월 24일 (토)","주유비 (광신석유 가야대로주유소)","유류비","",61300,4776672],
+["01월 24일 (토)","주유비 (광신석유 가야대로주유소)","유류비","",7400,4769272],
+["01월 24일 (토)","DB손해보험 (창호, 하린 보험료)","보험료","",104490,4664782],
+["01월 24일 (토)","크린에이드괘법점 (창호 와이셔츠)","기타","",2400,4662382],
+["01월 24일 (토)","본죽and비빔밥 사상점","외식비","",26000,4636382],
+["01월 24일 (토)","사상온누리약국 (병원비)","병원비/약","",26100,4610282],
+["01월 24일 (토)","본죽and비빔밥 사상점","외식비","",20500,4589782],
+["01월 24일 (토)","미래소아청소년과의원","양육비(병원비/약)","",17620,4572162],
+["01월 24일 (토)","(주)바람의 언덕 (커피)","카페","",13500,4558662],
+["01월 24일 (토)","네이버페이 (스틱커피)","간식비","",16945,4541717],
+]};
+
+/* ================= HELPERS ================= */
+const won = n => Math.round(n).toLocaleString('ko-KR');
+let currentMonthIdx = 7; // default: August (index 7 -> month 8), most recent
+let currentTab = 'dash';
+let catKind = 'expense';
+let addKind = 'expense';
+const START_BALANCE = 4982536;
+const STORAGE_KEY = 'user_added_transactions';
+const WEBHOOK_KEY = 'sheet_webhook_config';
+let userTxns = []; // kept in-memory for this session (not persisted, so the app works for anonymous viewers too)
+// Defaults baked in so the app works immediately for anyone opening the published link,
+// without needing a Claude account (window.storage requires sign-in and would block
+// anonymous viewers before they even see the page).
+let webhookConfig = {
+  url: 'https://script.google.com/macros/s/AKfycbwHuopVgGvykjmngODSm93kO-U1Ui1L6u7F8mu9HvT7X-RUrEinP-dyXenlImQQFswvDg/exec',
+  token: '4832'
+};
+
+function fmtCompact(n){ return won(n); }
+
+// balance at the very start of month idx (0-based), before that month's own totals
+function balanceBeforeMonth(idx){
+  return START_BALANCE
+    + totals.income.slice(0,idx).reduce((a,b)=>a+b,0)
+    - totals.expense.slice(0,idx).reduce((a,b)=>a+b,0)
+    - totals.saving.slice(0,idx).reduce((a,b)=>a+b,0);
+}
+
+function koreanDateLabel(dateStr){
+  if(!dateStr) return '';
+  const d = new Date(dateStr+'T00:00:00');
+  const days = ['일','월','화','수','목','금','토'];
+  const mm = String(d.getMonth()+1).padStart(2,'0');
+  const dd = String(d.getDate()).padStart(2,'0');
+  return `${mm}월 ${dd}일 (${days[d.getDay()]})`;
+}
+
+/* Apply one transaction's effect onto the in-memory data (totals + category dicts + ledger) */
+function applyTransaction(tx, opts={record:true}){
+  const idx = tx.monthIdx;
+  if(tx.kind==='income'){
+    if(!incomeCats[tx.cat]) incomeCats[tx.cat] = new Array(months.length).fill(0);
+    incomeCats[tx.cat][idx] += tx.amount;
+    totals.income[idx] += tx.amount;
+  } else if(tx.kind==='expense'){
+    if(!expenseCats[tx.cat]) expenseCats[tx.cat] = new Array(months.length).fill(0);
+    expenseCats[tx.cat][idx] += tx.amount;
+    totals.expense[idx] += tx.amount;
+  } else { // transfer / saving
+    totals.saving[idx] += tx.amount;
+  }
+
+  const m = months[idx];
+  if(!ledgerByMonth[m]) ledgerByMonth[m] = [];
+  const arr = ledgerByMonth[m];
+  const prevBal = arr.length ? arr[arr.length-1][5] : balanceBeforeMonth(idx);
+  let inAmt = '', outAmt = '', newBal;
+  if(tx.kind==='income'){ inAmt = tx.amount; newBal = prevBal + tx.amount; }
+  else if(tx.kind==='expense'){ outAmt = tx.amount; newBal = prevBal - tx.amount; }
+  else { outAmt = '-'+tx.amount; newBal = prevBal - tx.amount; }
+  arr.push([tx.date, tx.name, tx.cat, inAmt, outAmt, newBal]);
+}
+
+async function loadUserTxns(){
+  // In-memory only for this session — no window.storage call, so anonymous
+  // (non-logged-in) viewers of the published link aren't blocked by a sign-in wall.
+  userTxns = [];
+}
+
+async function saveUserTxns(){
+  // no-op: kept in memory only, see loadUserTxns() note above
+}
+
+async function loadWebhookConfig(){
+  // webhookConfig already has the baked-in defaults; just reflect them in the UI.
+  document.getElementById('inWebhookUrl').value = webhookConfig.url || '';
+  document.getElementById('inWebhookToken').value = webhookConfig.token || '';
+  updateSyncStatus();
+}
+
+function updateSyncStatus(){
+  const el = document.getElementById('syncStatus');
+  el.textContent = webhookConfig.url ? '연결됨 ✓' : '연결 안 됨';
+  el.style.color = webhookConfig.url ? 'var(--income)' : 'var(--ink-faint)';
+}
+
+async function saveWebhookConfig(){
+  webhookConfig.url = document.getElementById('inWebhookUrl').value.trim();
+  webhookConfig.token = document.getElementById('inWebhookToken').value.trim();
+  showToast('이번 세션에 적용했어요 (새로고침하면 기본값으로 돌아가요)');
+  updateSyncStatus();
+}
+
+// Opens a small popup that hits the Apps Script doGet endpoint with the
+// transaction as query params. We use window.open (real navigation) instead
+// of fetch, because the artifact sandbox blocks outbound fetch to arbitrary
+// external domains — a real page load isn't subject to that restriction.
+function pushToSheet(tx){
+  if(!webhookConfig.url) return;
+  const qs = new URLSearchParams({
+    date: tx.date, name: tx.name, cat: tx.cat,
+    kind: tx.kind, amount: tx.amount, token: webhookConfig.token
+  });
+  const full = webhookConfig.url + (webhookConfig.url.includes('?') ? '&' : '?') + qs.toString();
+  const win = window.open(full, 'sheetSync', 'width=260,height=180');
+  if(!win){
+    showToast('통장에는 기록했지만, 팝업이 차단돼서 시트 전송은 못했어요. 팝업 허용 후 다시 시도해 주세요.');
+  } else {
+    showToast('통장에 기록했어요 · 시트로도 전송했어요 ✓');
+  }
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(showToast._h);
+  showToast._h = setTimeout(()=>t.classList.remove('show'), 1800);
+}
+
+/* ================= MONTH BAR ================= */
+const monthBar = document.getElementById('monthBar');
+months.forEach((m,i)=>{
+  const chip = document.createElement('div');
+  chip.className = 'month-chip' + (i===currentMonthIdx?' active':'');
+  chip.textContent = m+'월';
+  chip.dataset.idx = i;
+  chip.addEventListener('click', ()=>{
+    currentMonthIdx = i;
+    document.querySelectorAll('.month-chip').forEach(c=>c.classList.remove('active'));
+    chip.classList.add('active');
+    renderAll();
+  });
+  monthBar.appendChild(chip);
+});
+
+/* ================= TABS ================= */
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    currentTab = tab.dataset.panel;
+    document.getElementById('panel-'+currentTab).classList.add('active');
+    renderAll();
+  });
+});
+
+/* ================= ADD TRANSACTION ================= */
+document.querySelectorAll('.kind-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.kind-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    addKind = btn.dataset.kind;
+    populateCatOptions();
+  });
+});
+
+function populateCatOptions(){
+  const dl = document.getElementById('catOptions');
+  let names;
+  if(addKind==='income') names = Object.keys(incomeCats);
+  else if(addKind==='expense') names = Object.keys(expenseCats);
+  else names = ['저축','적금','주식/투자','노후준비','상조회','mmf투자','기타 이체'];
+  dl.innerHTML = names.map(n=>`<option value="${n}">`).join('');
+}
+
+document.getElementById('inDate').valueAsDate = new Date(2026,7,28);
+
+document.getElementById('saveWebhookBtn').addEventListener('click', saveWebhookConfig);
+
+document.getElementById('submitBtn').addEventListener('click', async ()=>{
+  const dateRaw = document.getElementById('inDate').value;
+  const name = document.getElementById('inName').value.trim();
+  const cat = document.getElementById('inCat').value.trim();
+  const amt = parseFloat(document.getElementById('inAmt').value);
+
+  if(!dateRaw || !name || !cat || !amt || amt<=0){
+    showToast('날짜·내역·분류·금액을 모두 입력해 주세요');
+    return;
+  }
+  const monthNum = parseInt(dateRaw.split('-')[1],10);
+  const monthIdx = months.indexOf(monthNum);
+  if(monthIdx===-1){
+    showToast('1~8월 사이의 날짜만 기록할 수 있어요');
+    return;
+  }
+
+  const tx = { date: koreanDateLabel(dateRaw), name, cat, amount: amt, kind: addKind, monthIdx };
+  applyTransaction(tx);
+  userTxns.push(tx);
+  await saveUserTxns();
+
+  document.getElementById('inName').value = '';
+  document.getElementById('inCat').value = '';
+  document.getElementById('inAmt').value = '';
+  populateCatOptions();
+
+  if(webhookConfig.url){
+    pushToSheet(tx); // fire and forget, shows its own toast
+  } else {
+    showToast('통장에 기록했어요 ✓');
+  }
+
+  currentMonthIdx = monthIdx;
+  document.querySelectorAll('.month-chip').forEach((c,i)=>c.classList.toggle('active', i===monthIdx));
+  renderRecentAdded();
+  renderAll();
+});
+
+document.getElementById('clearAdded').addEventListener('click', async ()=>{
+  if(!userTxns.length){ showToast('삭제할 입력 내역이 없어요'); return; }
+  if(!confirm('직접 입력한 거래를 모두 삭제할까요? 원본 시트 데이터는 그대로 남아요.')) return;
+  userTxns = [];
+  await saveUserTxns();
+  showToast('직접 입력한 거래를 모두 지웠어요');
+  location.reload();
+});
+
+function renderRecentAdded(){
+  const card = document.getElementById('recentAddedCard');
+  const list = document.getElementById('recentAddedList');
+  if(!userTxns.length){ card.style.display = 'none'; return; }
+  card.style.display = 'block';
+  const kindColor = {income:'in',expense:'out',transfer:''};
+  list.innerHTML = userTxns.slice().reverse().slice(0,8).map(tx=>{
+    const cls = kindColor[tx.kind];
+    const sign = tx.kind==='income' ? '+' : (tx.kind==='transfer' ? '↔' : '-');
+    return `<div class="ledger-row">
+      <div class="led-dot ${cls||'out'}" style="${tx.kind==='transfer'?'background:'+brass:''}"></div>
+      <div class="led-mid">
+        <div class="led-name">${tx.name}</div>
+        <div class="led-cat">${tx.date} · ${tx.cat}</div>
+      </div>
+      <div class="led-amt ${cls}" style="${tx.kind==='transfer'?'color:'+brass:''}">${sign}${won(tx.amount)}</div>
+    </div>`;
+  }).join('');
+}
+
+document.querySelectorAll('.toggle-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    catKind = btn.dataset.kind;
+    renderCatList();
+  });
+});
+
+/* ================= SYNC FROM SHEET ================= */
+function parseMonthFromDate(dateStr){
+  const m = (dateStr||'').match(/^(\d{1,2})월/);
+  return m ? parseInt(m[1],10) : null;
+}
+
+function rebuildFromRows(rows){
+  // reset to a full 12-month shape
+  months.length = 0; monthNames.length = 0;
+  for(let m=1;m<=12;m++){ months.push(m); monthNames.push(m+'월'); }
+
+  totals.income = new Array(12).fill(0);
+  totals.expense = new Array(12).fill(0);
+  totals.saving = new Array(12).fill(0);
+
+  Object.keys(incomeCats).forEach(k=>delete incomeCats[k]);
+  Object.keys(expenseCats).forEach(k=>delete expenseCats[k]);
+  Object.keys(ledgerByMonth).forEach(k=>delete ledgerByMonth[k]);
+
+  rows.forEach(r=>{
+    const mo = parseMonthFromDate(r.date);
+    if(!mo) return;
+    const idx = mo - 1;
+    const income = Number(r.income) || 0;
+    const expense = Number(r.expense) || 0;
+    const transfer = Math.abs(Number(r.transfer)) || 0;
+    const balance = Number(r.balance) || 0;
+
+    let kind, amount, inCell='', outCell='';
+    if(income > 0){
+      kind='income'; amount=income;
+      if(!incomeCats[r.cat]) incomeCats[r.cat] = new Array(12).fill(0);
+      incomeCats[r.cat][idx] += income;
+      totals.income[idx] += income;
+      inCell = income;
+    } else if(expense > 0){
+      kind='expense'; amount=expense;
+      if(!expenseCats[r.cat]) expenseCats[r.cat] = new Array(12).fill(0);
+      expenseCats[r.cat][idx] += expense;
+      totals.expense[idx] += expense;
+      outCell = expense;
+    } else if(transfer > 0){
+      kind='transfer'; amount=transfer;
+      totals.saving[idx] += transfer;
+      outCell = '-'+transfer;
+    } else {
+      return; // no usable amount
+    }
+
+    if(!ledgerByMonth[mo]) ledgerByMonth[mo] = [];
+    ledgerByMonth[mo].push([r.date, r.name, r.cat, inCell, outCell, balance]);
+  });
+
+  // pick a sensible default month: the latest month that actually has data
+  let latestIdx = 0;
+  months.forEach((m,i)=>{ if(ledgerByMonth[m] && ledgerByMonth[m].length) latestIdx = i; });
+  currentMonthIdx = latestIdx;
+}
+
+async function syncFromSheet(){
+  if(!webhookConfig.url){
+    showToast('먼저 아래 "입력" 탭에서 시트 연동 설정을 저장해 주세요');
+    return;
+  }
+  const btn = document.getElementById('syncBtn');
+  const originalText = btn.textContent;
+  btn.textContent = '⟳ 불러오는 중…';
+  try{
+    const qs = new URLSearchParams({ action:'fetchAll', token: webhookConfig.token });
+    const sep = webhookConfig.url.includes('?') ? '&' : '?';
+    const res = await fetch(webhookConfig.url + sep + qs.toString());
+    const data = await res.json();
+    if(data.status !== 'ok'){
+      showToast('동기화 실패: ' + (data.message||'알 수 없는 오류'));
+      return;
+    }
+    rebuildFromRows(data.rows||[]);
+    rebuildMonthBar();
+    renderAll();
+    document.getElementById('syncTime').textContent = '마지막 동기화 ' + new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+    showToast('시트와 동기화했어요 · 거래 ' + (data.rows||[]).length + '건 ✓');
+  }catch(e){
+    console.error('동기화 실패', e);
+    showToast('동기화 실패했어요 — 이 화면이 Claude 대화창 안이라면, 다운로드한 파일로 직접 열어서 시도해 보세요');
+  }finally{
+    btn.textContent = originalText;
+  }
+}
+
+function rebuildMonthBar(){
+  const monthBar = document.getElementById('monthBar');
+  monthBar.innerHTML = '';
+  months.forEach((m,i)=>{
+    const chip = document.createElement('div');
+    chip.className = 'month-chip' + (i===currentMonthIdx?' active':'');
+    chip.textContent = m+'월';
+    chip.dataset.idx = i;
+    chip.addEventListener('click', ()=>{
+      currentMonthIdx = i;
+      document.querySelectorAll('.month-chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      renderAll();
+    });
+    monthBar.appendChild(chip);
+  });
+}
+
+document.getElementById('syncBtn').addEventListener('click', syncFromSheet);
+
+/* ================= HERO ================= */
+function renderHero(){
+  const cumBalance = 4982536 + totals.income.slice(0,currentMonthIdx+1).reduce((a,b)=>a+b,0)
+                      - totals.expense.slice(0,currentMonthIdx+1).reduce((a,b)=>a+b,0)
+                      - totals.saving.slice(0,currentMonthIdx+1).reduce((a,b)=>a+b,0);
+  document.getElementById('balanceNum').textContent = won(cumBalance);
+  document.getElementById('periodLabel').textContent = `2026년 1월 ~ ${currentMonthIdx+1}월 누계`;
+  document.getElementById('footIn').textContent = won(totals.income[currentMonthIdx]);
+  document.getElementById('footOut').textContent = won(totals.expense[currentMonthIdx]);
+  document.getElementById('footSave').textContent = won(totals.saving[currentMonthIdx]);
+}
+
+/* ================= CHARTS ================= */
+let flowChart, donutChart, rateChart;
+const navy = '#152A3B', income='#2F8F72', expense='#C6543A', brass='#B8894F';
+
+function renderFlowChart(){
+  const ctx = document.getElementById('flowChart');
+  if(flowChart) flowChart.destroy();
+  flowChart = new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels: monthNames,
+      datasets:[
+        {label:'수입', data: totals.income, backgroundColor: income, borderRadius:4, barPercentage:0.55},
+        {label:'지출', data: totals.expense, backgroundColor: expense, borderRadius:4, barPercentage:0.55},
+      ]
+    },
+    options:{
+      responsive:true,
+      plugins:{legend:{position:'bottom',labels:{font:{family:"'Noto Sans KR'",size:11},boxWidth:10,color:navy}}},
+      scales:{
+        x:{grid:{display:false},ticks:{font:{family:"'IBM Plex Mono'",size:10.5},color:'#8A7F68'}},
+        y:{grid:{color:'#E4DCC7'},ticks:{font:{family:"'IBM Plex Mono'",size:9.5},color:'#8A7F68',callback:v=>(v/10000)+'만'}}
+      }
+    }
+  });
+}
+
+function renderDonutChart(){
+  const ctx = document.getElementById('donutChart');
+  const idx = currentMonthIdx;
+  const entries = Object.entries(expenseCats).map(([k,v])=>[k,v[idx]]).filter(([k,v])=>v>0).sort((a,b)=>b[1]-a[1]);
+  const top = entries.slice(0,7);
+  const restSum = entries.slice(7).reduce((a,[,v])=>a+v,0);
+  if(restSum>0) top.push(['기타 항목', restSum]);
+  document.getElementById('catNote').textContent = monthNames[idx] + ' 지출';
+  const palette = ['#C6543A','#B8894F','#D8A24C','#8FAE8A','#5C8A9E','#8B6B9E','#B57D6C','#A8A190'];
+  if(donutChart) donutChart.destroy();
+  donutChart = new Chart(ctx, {
+    type:'doughnut',
+    data:{
+      labels: top.map(t=>t[0]),
+      datasets:[{data: top.map(t=>t[1]), backgroundColor: palette, borderColor:'#FFFDF8', borderWidth:2}]
+    },
+    options:{
+      responsive:true,
+      cutout:'62%',
+      plugins:{legend:{position:'bottom',labels:{font:{family:"'Noto Sans KR'",size:10.5},boxWidth:9,color:navy,padding:10}}}
+    }
+  });
+}
+
+function renderRateChart(){
+  const ctx = document.getElementById('rateChart');
+  const rate = months.map((m,i)=> +(((totals.income[i]-totals.expense[i])/totals.income[i])*100).toFixed(1));
+  if(rateChart) rateChart.destroy();
+  rateChart = new Chart(ctx, {
+    type:'line',
+    data:{
+      labels: monthNames,
+      datasets:[{
+        data: rate, borderColor: brass, backgroundColor:'rgba(184,137,79,0.15)',
+        fill:true, tension:0.35, pointRadius:4, pointBackgroundColor: brass,
+      }]
+    },
+    options:{
+      responsive:true,
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{grid:{display:false},ticks:{font:{family:"'IBM Plex Mono'",size:10.5},color:'#8A7F68'}},
+        y:{grid:{color:'#E4DCC7'},ticks:{font:{family:"'IBM Plex Mono'",size:9.5},color:'#8A7F68',callback:v=>v+'%'}}
+      }
+    }
+  });
+}
+
+/* ================= LEDGER ================= */
+function renderLedger(){
+  const card = document.getElementById('ledgerCard');
+  const m = months[currentMonthIdx];
+  const rows = ledgerByMonth[m];
+  if(!rows){
+    card.innerHTML = `<div class="empty">
+      <div class="empty-mark">帳</div>
+      <p><b>${m}월 상세 내역이 아직 없어요</b></p>
+      <p>이 통장에는 1월 거래만 한 줄 한 줄 기록되어 있어요.<br>다른 달은 대시보드·카테고리 탭에서 합계로 볼 수 있어요.</p>
+    </div>`;
+    return;
+  }
+  let lastDay = null;
+  let html = '';
+  rows.forEach(([date,name,cat,inAmt,outAmt,bal])=>{
+    if(date!==lastDay){ html += `<div class="ledger-day">${date}</div>`; lastDay = date; }
+    const isIn = inAmt!=='' && inAmt!==undefined;
+    const amtVal = isIn ? inAmt : outAmt;
+    const isNegDisplay = (typeof amtVal === 'string'); // saving-type transfer stored as "-N"
+    const displayAmt = isNegDisplay ? amtVal.replace('-','') : amtVal;
+    const cls = isIn ? 'in' : 'out';
+    const sign = isIn ? '+' : (isNegDisplay ? '↔' : '-');
+    html += `<div class="ledger-row">
+      <div class="led-dot ${cls}"></div>
+      <div class="led-mid">
+        <div class="led-name">${name}</div>
+        <div class="led-cat">${cat}</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="led-amt ${isNegDisplay?'':cls}" style="${isNegDisplay?'color:'+brass:''}">${sign}${won(displayAmt)}</div>
+        <div class="led-bal">잔액 ${won(bal)}</div>
+      </div>
+    </div>`;
+  });
+  card.innerHTML = html;
+}
+
+/* ================= CATEGORY LIST ================= */
+function renderCatList(){
+  const list = document.getElementById('catList');
+  const src = catKind==='expense' ? expenseCats : incomeCats;
+  const idx = currentMonthIdx;
+  const entries = Object.entries(src).map(([k,v])=>[k,v[idx]]).sort((a,b)=>b[1]-a[1]);
+  const max = Math.max(...entries.map(e=>e[1]),1);
+  const total = entries.reduce((a,[,v])=>a+v,0) || 1;
+  list.innerHTML = entries.map(([name,val])=>{
+    const pct = (val/max*100).toFixed(0);
+    const share = (val/total*100).toFixed(1);
+    return `<div class="cat-item">
+      <div class="cat-top"><span class="nm">${name}</span><span class="amt">${won(val)}</span></div>
+      <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:${pct}%;${catKind==='income'?'background:linear-gradient(90deg,#2F8F72,#8FAE8A);':''}"></div></div>
+      <div class="cat-pct">${monthNames[idx]} 전체의 ${share}%</div>
+    </div>`;
+  }).join('');
+}
+
+/* ================= RENDER ALL ================= */
+function renderAll(){
+  renderHero();
+  document.getElementById('addMonthNote').textContent = monthNames[currentMonthIdx] + '에 기록';
+  if(currentTab==='dash'){ renderFlowChart(); renderDonutChart(); renderRateChart(); }
+  if(currentTab==='ledger'){ renderLedger(); }
+  if(currentTab==='cat'){ renderCatList(); }
+  if(currentTab==='add'){ renderRecentAdded(); }
+}
+
+(async function init(){
+  await loadUserTxns();
+  await loadWebhookConfig();
+  populateCatOptions();
+  renderAll();
+  if(webhookConfig.url){
+    syncFromSheet(); // best-effort auto refresh on open; silently no-ops if blocked
+  }
+})();
+</script>
+</body>
+</html>
