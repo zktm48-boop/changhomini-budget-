@@ -840,6 +840,26 @@ function rebuildFromRows(rows){
   currentMonthIdx = latestIdx;
 }
 
+// JSONP loader — bypasses CORS entirely by loading the response as a <script>
+// tag instead of via fetch. Google Apps Script doesn't send CORS headers for
+// plain fetch requests, so this is the reliable way to read data back.
+function jsonpRequest(url){
+  return new Promise((resolve, reject)=>{
+    const cbName = 'jsonpCb_' + Date.now() + '_' + Math.floor(Math.random()*10000);
+    const script = document.createElement('script');
+    const timer = setTimeout(()=>{ cleanup(); reject(new Error('시간 초과')); }, 15000);
+    function cleanup(){
+      delete window[cbName];
+      script.remove();
+      clearTimeout(timer);
+    }
+    window[cbName] = (data)=>{ cleanup(); resolve(data); };
+    script.src = url + (url.includes('?') ? '&' : '?') + 'callback=' + cbName;
+    script.onerror = ()=>{ cleanup(); reject(new Error('스크립트 로드 실패')); };
+    document.body.appendChild(script);
+  });
+}
+
 async function syncFromSheet(){
   if(!webhookConfig.url){
     showToast('먼저 아래 "입력" 탭에서 시트 연동 설정을 저장해 주세요');
@@ -851,8 +871,7 @@ async function syncFromSheet(){
   try{
     const qs = new URLSearchParams({ action:'fetchAll', token: webhookConfig.token });
     const sep = webhookConfig.url.includes('?') ? '&' : '?';
-    const res = await fetch(webhookConfig.url + sep + qs.toString());
-    const data = await res.json();
+    const data = await jsonpRequest(webhookConfig.url + sep + qs.toString());
     if(data.status !== 'ok'){
       showToast('동기화 실패: ' + (data.message||'알 수 없는 오류'));
       return;
@@ -864,7 +883,7 @@ async function syncFromSheet(){
     showToast('시트와 동기화했어요 · 거래 ' + (data.rows||[]).length + '건 ✓');
   }catch(e){
     console.error('동기화 실패', e);
-    showToast('동기화 실패했어요 — 이 화면이 Claude 대화창 안이라면, 다운로드한 파일로 직접 열어서 시도해 보세요');
+    showToast('동기화 실패했어요: ' + e.message);
   }finally{
     btn.textContent = originalText;
   }
