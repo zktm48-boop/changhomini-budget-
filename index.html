@@ -1056,7 +1056,7 @@ function jsonpRequest(url){
   return new Promise((resolve, reject)=>{
     const cbName = 'jsonpCb_' + Date.now() + '_' + Math.floor(Math.random()*10000);
     const script = document.createElement('script');
-    const timer = setTimeout(()=>{ cleanup(); reject(new Error('시간 초과')); }, 40000);
+    const timer = setTimeout(()=>{ cleanup(); reject(new Error('시간 초과')); }, 60000);
     function cleanup(){
       delete window[cbName];
       script.remove();
@@ -1069,14 +1069,20 @@ function jsonpRequest(url){
   });
 }
 
+let syncInProgress = false;
 async function syncFromSheet(){
   if(!webhookConfig.url){
     showToast('먼저 아래 "입력" 탭에서 시트 연동 설정을 저장해 주세요');
     return;
   }
+  if(syncInProgress){
+    showToast('이미 동기화 중이에요, 잠시만 기다려 주세요');
+    return;
+  }
+  syncInProgress = true;
   const btn = document.getElementById('syncBtn');
   const originalText = btn.textContent;
-  btn.textContent = '⟳ 불러오는 중…';
+  btn.textContent = '⟳ 불러오는 중… (최대 1분)';
   try{
     const qs = new URLSearchParams({ action:'fetchAll', token: webhookConfig.token });
     const sep = webhookConfig.url.includes('?') ? '&' : '?';
@@ -1095,6 +1101,7 @@ async function syncFromSheet(){
     showToast('동기화 실패했어요: ' + e.message);
   }finally{
     btn.textContent = originalText;
+    syncInProgress = false;
   }
 }
 
@@ -1277,9 +1284,8 @@ function renderAll(){
   await loadWebhookConfig();
   populateCatOptions();
   renderAll();
-  if(webhookConfig.url){
-    syncFromSheet(); // best-effort auto refresh on open; silently no-ops if blocked
-  }
+  // note: sync is manual-only now (no auto-sync on load) to avoid two
+  // concurrent requests competing and each taking longer to respond
 })();
 </script>
 </body>
