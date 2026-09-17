@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
   :root{
     --paper:#F6F1E4;
@@ -251,6 +252,21 @@
     box-shadow:0 12px 24px -10px rgba(0,0,0,0.4);white-space:nowrap;z-index:50;
   }
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* ===== STATEMENT PREVIEW ===== */
+  .preview-row{
+    display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px dotted var(--line);
+  }
+  .preview-row:last-child{border-bottom:none;}
+  .preview-check{flex-shrink:0;width:16px;height:16px;accent-color:var(--brass);}
+  .preview-mid{flex:1;min-width:0;}
+  .preview-name{font-size:13px;font-weight:600;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .preview-date{font-size:10.5px;color:var(--ink-faint);}
+  .preview-amt{font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;color:var(--expense);white-space:nowrap;min-width:70px;text-align:right;}
+  .preview-cat-select{
+    font-size:11.5px;padding:5px 6px;border-radius:8px;border:1px solid var(--line);
+    background:var(--paper);color:var(--navy);max-width:96px;
+  }
 </style>
 </head>
 <body>
@@ -321,7 +337,21 @@
 
   <!-- ADD TRANSACTION -->
   <div class="panel" id="panel-add">
-    <div class="card">
+    <div class="card" id="uploadCard">
+      <div class="card-title">카드 명세서 업로드<span class="note">현대카드 xls</span></div>
+      <input type="file" id="inStatementFile" accept=".xls,.xlsx,.csv" style="width:100%;font-size:12.5px;color:var(--navy);">
+      <div style="font-size:11px;color:var(--ink-faint);margin-top:8px;line-height:1.6;">
+        명세서를 올리면 소계/합계 줄은 자동으로 빼고, 가맹점 이름을 보고 분류를 추측해서 아래 미리보기에 보여줘요. 확인하고 틀린 분류만 고친 다음 등록하면 돼요.
+      </div>
+    </div>
+
+    <div class="card" id="previewCard" style="display:none;">
+      <div class="card-title">불러온 거래 미리보기<span class="note" id="previewCount"></span></div>
+      <div id="previewList"></div>
+      <button class="submit-btn" id="bulkSubmitBtn" style="margin-top:12px;">선택한 거래 일괄 등록</button>
+    </div>
+
+    <div class="card" id="uploadCard2">
       <div class="card-title">새 거래 입력<span class="note" id="addMonthNote">8월</span></div>
       <div class="kind-row">
         <div class="kind-btn active" data-kind="expense">지출</div>
@@ -780,6 +810,185 @@ document.querySelectorAll('.toggle-btn').forEach(btn=>{
     renderCatList();
   });
 });
+
+/* ================= STATEMENT UPLOAD & AUTO-CATEGORIZE ================= */
+const CATEGORY_KEYWORDS = [
+  [/약국|의원|병원|한의원|치과|정형외과|피부과|내과|이비인후과|소아과/, '병원비/약'],
+  [/스타벅스|이디야|투썸|카페|커피|빽다방|메가커피|컴포즈/, '카페'],
+  [/GS25|CU|세븐일레븐|이마트24|미니스톱|씨유/, '생필품'],
+  [/주유소|오일뱅크|S-OIL|칼텍스|주유/, '유류비'],
+  [/정비|카센터|타이어|자동차|세차|스피드메이트/, '차량유지비'],
+  [/네이버페이|쿠팡|11번가|지마켓|옥션|마켓컬리|SSG/, '쇼핑'],
+  [/KT|SKT|LG유플러스|통신|텔레콤/, '통신비'],
+  [/다이소|아트박스|올리브영/, '생필품'],
+  [/이마트|롯데마트|홈플러스|하나로마트/, '식비'],
+  [/김밥|분식|치킨|피자|버거|맥도날드|국밥|식당|반점|고기|삼겹살|족발|갈비/, '외식비'],
+  [/택시|버스|지하철|주차/, '교통비'],
+  [/영화|CGV|롯데시네마|메가박스|공연/, '문화생활'],
+  [/헬스|필라테스|요가|미용실|피부관리/, '미용'],
+  [/코웨이|연회비/, '기타 생활비'],
+];
+function guessCategory(name){
+  for(const [re, cat] of CATEGORY_KEYWORDS){
+    if(re.test(name)) return cat;
+  }
+  return '기타 생활비';
+}
+
+let pendingRows = []; // parsed rows awaiting confirmation
+
+document.getElementById('inStatementFile').addEventListener('change', (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev)=>{
+    try{
+      const wb = XLSX.read(ev.target.result, {type:'array'});
+      const sheet = wb.Sheets[wb.SheetNames[0]];
+      const rows = XLSX.utils.sheet_to_json(sheet, {header:1, defval:''});
+      parseStatementRows(rows);
+    }catch(err){
+      console.error(err);
+      showToast('파일을 읽지 못했어요: ' + err.message);
+    }
+  };
+  reader.readAsArrayBuffer(file);
+});
+
+function parseStatementRows(rows){
+  // find the header row and the actual column positions for 이용일 / 이용가맹점
+  // (다른 열은 카드사 파일마다 위치가 어긋나는 경우가 있어 이 두 열을 기준으로 상대 위치를 계산합니다)
+  let headerIdx = -1, dateCol = -1, nameCol = -1;
+  for(let i=0;i<rows.length;i++){
+    const row = rows[i].map(v=>(v||'').toString().trim());
+    const di = row.indexOf('이용일'), ni = row.indexOf('이용가맹점');
+    if(di !== -1 && ni !== -1){ headerIdx = i; dateCol = di; nameCol = ni; break; }
+  }
+  if(headerIdx === -1){
+    showToast('명세서 형식을 알아보지 못했어요 (이용일/이용가맹점 헤더를 못 찾음)');
+    return;
+  }
+
+  const num = v => { const n = Number((v||'').toString().replace(/,/g,'')); return isNaN(n)?0:n; };
+  const out = [];
+  for(let i=headerIdx+1;i<rows.length;i++){
+    const row = rows[i];
+    const dateRaw = (row[dateCol]||'').toString().trim();
+    const rawName = (row[nameCol]||'').toString().trim();
+    if(!dateRaw || dateRaw === '-' || !rawName) continue;
+    if(rawName.includes('소계') || rawName.includes('합계')) continue;
+
+    // 가맹점명 칸에 금액이 그대로 붙어 나오는 경우가 있어 끝의 숫자를 떼어 이름만 남김
+    const m = rawName.match(/^(.*?)(-?[\d,]+)$/);
+    const cleanName = m ? m[1].trim() : rawName;
+    if(!cleanName) continue;
+
+    // 결제원금 계열 열들이 파일마다 위치가 밀려있어, 가맹점 열 기준 오른쪽 몇 칸을
+    // 순서대로 확인해서 처음 나오는 양수 값을 이번 달 실제 청구액으로 사용
+    let amount = 0;
+    for(let off=4; off<=7; off++){
+      const v = num(row[nameCol+off]);
+      if(v > 0){ amount = v; break; }
+    }
+    if(amount <= 0) continue; // 취소/상계로 순액이 0인 거래는 건너뜀
+
+    const dm = dateRaw.match(/(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/);
+    if(!dm) continue;
+    const dateObj = new Date(parseInt(dm[1]), parseInt(dm[2])-1, parseInt(dm[3]));
+    const dateLabel = koreanDateLabel(dateObj.toISOString().slice(0,10));
+    const monthNum = parseInt(dm[2],10);
+
+    out.push({ date: dateLabel, name: cleanName, amount, cat: guessCategory(cleanName), monthNum, include:true });
+  }
+
+  if(!out.length){
+    showToast('명세서에서 거래를 찾지 못했어요');
+    return;
+  }
+  pendingRows = out;
+  renderPreview();
+}
+
+function renderPreview(){
+  const card = document.getElementById('previewCard');
+  const list = document.getElementById('previewList');
+  const count = document.getElementById('previewCount');
+  card.style.display = 'block';
+  count.textContent = pendingRows.length + '건';
+
+  const allCats = Array.from(new Set([...Object.keys(expenseCats), ...CATEGORY_KEYWORDS.map(k=>k[1])]));
+
+  list.innerHTML = pendingRows.map((r,i)=>`
+    <div class="preview-row">
+      <input type="checkbox" class="preview-check" data-i="${i}" ${r.include?'checked':''}>
+      <div class="preview-mid">
+        <div class="preview-name">${r.name}</div>
+        <div class="preview-date">${r.date}</div>
+      </div>
+      <select class="preview-cat-select" data-i="${i}">
+        ${allCats.map(c=>`<option value="${c}" ${c===r.cat?'selected':''}>${c}</option>`).join('')}
+      </select>
+      <div class="preview-amt">${won(r.amount)}</div>
+    </div>
+  `).join('');
+
+  list.querySelectorAll('.preview-check').forEach(cb=>{
+    cb.addEventListener('change', ()=>{ pendingRows[cb.dataset.i].include = cb.checked; });
+  });
+  list.querySelectorAll('.preview-cat-select').forEach(sel=>{
+    sel.addEventListener('change', ()=>{ pendingRows[sel.dataset.i].cat = sel.value; });
+  });
+}
+
+document.getElementById('bulkSubmitBtn').addEventListener('click', async ()=>{
+  const chosen = pendingRows.filter(r=>r.include);
+  if(!chosen.length){ showToast('등록할 거래를 선택해 주세요'); return; }
+
+  const btn = document.getElementById('bulkSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = '등록 중…';
+
+  chosen.forEach(r=>{
+    const monthIdx = months.indexOf(r.monthNum);
+    if(monthIdx === -1) return;
+    applyTransaction({ date:r.date, name:r.name, cat:r.cat, amount:r.amount, kind:'expense', monthIdx });
+  });
+  renderAll();
+
+  if(webhookConfig.url){
+    try{
+      await bulkPushToSheet(chosen);
+      showToast(chosen.length + '건을 시트에 등록했어요 ✓');
+    }catch(e){
+      console.error(e);
+      showToast('앱에는 반영됐지만 시트 전송 중 일부 실패했어요: ' + e.message);
+    }
+  } else {
+    showToast(chosen.length + '건을 통장에 기록했어요 (시트 연동 없음)');
+  }
+
+  pendingRows = [];
+  document.getElementById('previewCard').style.display = 'none';
+  document.getElementById('inStatementFile').value = '';
+  btn.disabled = false;
+  btn.textContent = '선택한 거래 일괄 등록';
+});
+
+// Sends many rows to the Apps Script in one JSONP call (chunked to keep URLs short)
+async function bulkPushToSheet(rows){
+  const chunkSize = 15;
+  for(let i=0;i<rows.length;i+=chunkSize){
+    const chunk = rows.slice(i, i+chunkSize).map(r=>({
+      date:r.date, name:r.name, cat:r.cat, kind:'expense', amount:r.amount
+    }));
+    const qs = new URLSearchParams({
+      action:'bulkWrite', token: webhookConfig.token, rows: JSON.stringify(chunk)
+    });
+    const sep = webhookConfig.url.includes('?') ? '&' : '?';
+    const data = await jsonpRequest(webhookConfig.url + sep + qs.toString());
+    if(data.status !== 'ok') throw new Error(data.message || '알 수 없는 오류');
+  }
+}
 
 /* ================= SYNC FROM SHEET ================= */
 function parseMonthFromDate(dateStr){
